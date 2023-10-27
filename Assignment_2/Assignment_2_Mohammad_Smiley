@@ -1,0 +1,36 @@
+###############
+# Choice nb 1 #
+###############
+def count_digits(n):
+    if not n:
+        return 0
+    elif n[0].isdigit():
+        return 1 + count_digits(n[1:])
+    else:
+        return count_digits(n[1:])
+
+###############
+# Choice nb 2 #
+###############
+def find_max(int_list):
+    if len(int_list) == 0:
+        return int_list[0]
+    else:
+        max_value = find_max(int_list[1:])
+        return int_list[0] if int_list[0] > max_value else max_value
+
+########################
+# Building The Program #
+########################
+print("1. Count digits\n2. Find Max\n3. Quit")
+choice = int(input("Choose a process: "))
+print("----------------------------------")
+if choice == 1:
+    n = input("Enter A number to count its digits: ")
+    print(count_digits(n))
+elif choice == 2:
+    int_list = int(list(input("Enter a list of integers: ")))
+    print("The maximum value is ",find_max(n))
+else:
+    while choice == 3:
+        break
