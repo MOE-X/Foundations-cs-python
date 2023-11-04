@@ -28,30 +28,176 @@ student_data = [
         "Major" : "Graphic Design",
         "GPA" : 3.6,
     },
+    {
+        "ID" : 4,
+        "Name" : "Malek",
+        "Age" : 19,
+        "Major" : "Engineering",
+        "GPA" : 4,
+    },
 ]
+student_data_2 = [
 
-def getStudentByID(student_data,student_ID): # Choice 1
+    {
+        "ID" : 1,
+        "Name" : "Shafica",
+        "Age" : 19,
+        "Major" : "Informatics",
+        "GPA" : 3.0,
+    },
+    {
+        "ID" : 2,
+        "Name" : "Haneen",
+        "Age" : 19,
+        "Major" : "Informatics",
+        "GPA" : 2.9,
+    },
+    {
+        "ID" : 3,
+        "Name" : "Georgio",
+        "Age" : 20,
+        "Major" : "Computer Science",
+        "GPA" : 3.8,
+    },
+    {
+        "ID" : 4,
+        "Name" : "Hamza",
+        "Age" : 23,
+        "Major" : "Computer Science",
+        "GPA" : 3.6,
+    },
+]
+###############################
+# Choice 1: Get Student By ID #
+###############################
+def getStudentByID(student_data,student_ID):
     for student in student_data:
         if student_ID == student["ID"]:
-            print(student)
+            for key, value in student.items():
+                print(key,": ",value)
+        else:
+            return("ID not found")
         
-        
-def getAllStudents(student_data): # Choice 2
+##############################
+# Choice 2: Get All Students #
+##############################      
+def getAllStudents(student_data):
     for student in student_data:
-        print(student)
-    
+        print("---------------------------------------------")
+        for key, value in student.items():
+            print(key,": ",value)
+
+##################################
+# Choice 3: Get Sudents By Major #
+##################################
+def getStudentByMajor(student_data, major):
+    student_lst = []
+    for student in student_data:
+        if major == student["Major"]:
+            student_lst.append(student["Name"])
+    return student_lst
+###########################
+# Choice 4: Add Student   #
+###########################
+def addStudent(student_data, name, age, major, gpa):
+    new_student = {
+        'Name': name,
+        'Age': age,
+        'Major': major,
+        'GPA': gpa
+    }
+    student_data.append(new_student)
+    print("Student Added.")
+    return student_data
+###########################
+# Choice 5: Common Majors #
+###########################
+def get_common(student_data, student_data2):
+    majors = set([item['Major'] for item in student_data])
+    majors2 = set([item['Major'] for item in student_data2])
+    common_majors = majors & majors2
+    if common_majors:
+        for major in common_majors:
+            return set(common_majors)
+    else:
+        print("no common majors")
+        return []
 
 
+##################################
+# Choice 6: Delete Student By ID #
+##################################
+def deleteStudent(student_data, student_ID) :
+    for student in student_data:
+        if student_ID == student["ID"]:
+            student_data.remove(student)
+            return("ID : ",student_ID," is removed.")
+
+#########################
+# Choice 7: Average GPA #
+#########################
+def averageGPA(student_data):
+    total_gpa = 0.0
+    count_gpa = 0
+
+    for student in student_data:
+        if 'GPA' in student:  
+            try:
+                gpa = float(student['GPA'])  
+                total_gpa += gpa
+                count_gpa += 1
+            except (ValueError, KeyError):
+                print(f"Issue with GPA value for student: {student.get('name', 'Unknown')}")
+
+    if count_gpa > 0:
+        average_gpa = total_gpa / count_gpa
+        print(f"The average GPA is: {average_gpa:.2f}")  
+    else:
+        print("No valid GPA found.")
+
+#####################################
+# Choice 8: Top Performing Students #
+#####################################
+def topPerformers(student_data):#this is all i can do about this choice i wont cheat
+    all_gpa = []
+    top_names = []
+    for item in student_data:
+        all_gpa.append(item["GPA"])
+        top_names.append(item["Name"])
+    print(all_gpa)
+    print(top_names)
+
+
+################################
+# Checking What The User Chose #
+################################
 def display(choice):
     while choice < 1 or choice > 9:
         choice = int(input("Invalid choice. try again: "))
         break
     if choice == 1:
         student_ID = int(input("Enter student's ID: "))
-        getStudentByID(student_data,student_ID)
+        print(getStudentByID(student_data,student_ID))
     elif choice == 2:
         getAllStudents(student_data)
-    
+    elif choice == 3:
+        major = input("Enter the student major: ")
+        print(getStudentByMajor(student_data, major))
+    elif choice == 4:
+        name = input("Enter the student's name: ")
+        age = int(input("Enter the student's age: "))
+        major = input("Enter the student's major: ")
+        gpa = float(input("Enter the student's GPA: "))
+        addStudent(student_data, name, age, major, gpa)
+    elif choice == 5:
+        print(getommonMajor(student_data, student_data_2))
+    elif choice == 6:
+        student_ID = int(input("Enter the ID you want to delete: "))
+        print(deleteStudent(student_data, student_ID))
+    elif choice == 7:
+        averageGPA(student_data)
+    elif choice == 8:
+        topPerformers(student_data)
     elif choice == 9:
         exit()
 
@@ -59,14 +205,14 @@ def display(choice):
 print(
     """
     --------------------------
-    1. Get Student by ID\n
-    2. Get All Students\n
-    3. Get Students by Major\n
-    4. Add Students\n
-    5. Find Common Majors\n
-    6. Delete Student\n
-    7. Calculate Average GPA\n
-    8. Get Top Performers\n
+    1. Get Student by ID
+    2. Get All Students
+    3. Get Students by Major
+    4. Add Students
+    5. Find Common Majors
+    6. Delete Student
+    7. Calculate Average GPA
+    8. Get Top Performers
     9. Exit
     --------------------------
     """
