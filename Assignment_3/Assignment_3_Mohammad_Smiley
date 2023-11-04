@@ -1,0 +1,76 @@
+student_data = [
+
+    {
+        "ID" : 1,
+        "Name" : "Mohammad",
+        "Age" : 18,
+        "Major" : "Informatics",
+        "GPA" : 3.5,
+    },
+    {
+        "ID" : 2,
+        "Name" : "Ibrahim",
+        "Age" : 22,
+        "Major" : "Computer Science",
+        "GPA" : 3.2,
+    },
+    {
+        "ID" : 3,
+        "Name" : "Mohammad",
+        "Age" : 18,
+        "Major" : "Computer Science",
+        "GPA" : 2.8,
+    },
+    {
+        "ID" : 4,
+        "Name" : "Rami",
+        "Age" : 19,
+        "Major" : "Graphic Design",
+        "GPA" : 3.6,
+    },
+]
+
+def getStudentByID(student_data,student_ID): # Choice 1
+    for student in student_data:
+        if student_ID == student["ID"]:
+            print(student)
+        
+        
+def getAllStudents(student_data): # Choice 2
+    for student in student_data:
+        print(student)
+    
+
+
+def display(choice):
+    while choice < 1 or choice > 9:
+        choice = int(input("Invalid choice. try again: "))
+        break
+    if choice == 1:
+        student_ID = int(input("Enter student's ID: "))
+        getStudentByID(student_data,student_ID)
+    elif choice == 2:
+        getAllStudents(student_data)
+    
+    elif choice == 9:
+        exit()
+
+#Displaying the menu:
+print(
+    """
+    --------------------------
+    1. Get Student by ID\n
+    2. Get All Students\n
+    3. Get Students by Major\n
+    4. Add Students\n
+    5. Find Common Majors\n
+    6. Delete Student\n
+    7. Calculate Average GPA\n
+    8. Get Top Performers\n
+    9. Exit
+    --------------------------
+    """
+)
+
+choice = int(input("Choose a function: "))
+display(choice)
