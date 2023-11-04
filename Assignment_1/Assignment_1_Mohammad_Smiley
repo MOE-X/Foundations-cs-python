@@ -1,86 +1,86 @@
 ########################
 #    Question nb. 1    #
 ########################
-# def factorial(fact):
-#     fact = 1
-#     if num < 0:
-#         print("Sorry, Factorial doesnt work for negative numbers.")
-#     elif num == 0:
-#         print("The factorial of 1 is 0.")
-#     else:
-#         for i in range(1,num+1):
-#             fact = fact * i
-#         print("The factorial of ",num," is ",fact)
-#     return fact
-# num = int(input("Enter an number: "))
-# factorial(num)
+def factorial(fact):
+    fact = 1
+    if num < 0:
+        print("Sorry, Factorial doesnt work for negative numbers.")
+    elif num == 0:
+        print("The factorial of 1 is 0.")
+    else:
+        for i in range(1,num+1):
+            fact = fact * i
+        print("The factorial of ",num," is ",fact)
+    return fact
+num = int(input("Enter an number: "))
+factorial(num)
 ###########################################################################
 
 ########################
 #    Question nb. 2    #
 ########################
-# def find_divisors(lst):
-#     for i in range(1,n+1):
-#         if n % i == 0:
-#             lst.append(i)
-#     print(lst)
-# lst = []
-# n = int(input("Enter the number to check its divisors: "))
-# find_divisors(lst)
+def find_divisors(lst):
+    for i in range(1,n+1):
+        if n % i == 0:
+            lst.append(i)
+    print(lst)
+lst = []
+n = int(input("Enter the number to check its divisors: "))
+find_divisors(lst)
 ###########################################################################
 
 ########################
 #    Question nb. 3    #
 ########################
-# def reverse_string(string):
-#     new_string = ""
-#     for i in string:
-#         new_string = i + new_string
-#     print(new_string)
+def reverse_string(string):
+    new_string = ""
+    for i in string:
+        new_string = i + new_string
+    print(new_string)
 
-# string = input("Enter your word/sentence to reverse it: ")
-# reverse_string(string)
+string = input("Enter your word/sentence to reverse it: ")
+reverse_string(string)
 ###########################################################################
 
 ########################
 #    Question nb. 4    #
 ########################
-# def check_even_list(lst):
-#     for element in lst:
-#         if element % 2 != 0:
-#             lst.remove(element)
-#     print(lst)
-# lst = []
-# n = int(input("How many numbers would you like to input: "))
-# for i in range(0,n):
-#         lst_elements = int(input("Enter your numbers: "))
-#         lst.append(lst_elements)
-# check_even_list(lst)
+def check_even_list(lst):
+    for element in lst:
+        if element % 2 != 0:
+            lst.remove(element)
+    print(lst)
+lst = []
+n = int(input("How many numbers would you like to input: "))
+for i in range(0,n):
+        lst_elements = int(input("Enter your numbers: "))
+        lst.append(lst_elements)
+check_even_list(lst)
 ###########################################################################
 
 ########################
 #    Question nb. 5    #
 ########################
-# def check_password(password):
-#     upper_chars, lower_chars, digits, spacial_chars, length = 0, 0, 0, 0, 0
-#     length = len(password)
+def check_password(password):
+    upper_chars, lower_chars, digits, spacial_chars, length = 0, 0, 0, 0, 0
+    length = len(password)
 
-#     if length < 8:
-#         print("Your password must be at least 8 characters long.")
-#     else:
-#         for i in range(0, length):
-#             if password[i].isupper():
-#                 upper_chars += 1
-#             elif password[i].islower():
-#                 lower_chars += 1
-#             elif password[i].isdigit():
-#                 digits += 1
-#             elif password[i] == "#" or password[i] == "!" or password[i] == "?" or password[i] == "$":
-#                 spacial_chars += 1
+    if length < 8:
+        print("Your password must be at least 8 characters long.")
+    else:
+        for i in range(0, length):
+            if password[i].isupper():
+                upper_chars += 1
+            elif password[i].islower():
+                lower_chars += 1
+            elif password[i].isdigit():
+                digits += 1
+            elif password[i] == "#" or password[i] == "!" or password[i] == "?" or password[i] == "$":
+                spacial_chars += 1
     
-#     if upper_chars != 0 and lower_chars != 0 and digits != 0 and spacial_chars != 0:
-#         print("Stong password!")
-#     else:
-#         print("Weak password!")
-# password = input("Enter your password to check how strong it is: ")
-# check_password(password)
+    if upper_chars != 0 and lower_chars != 0 and digits != 0 and spacial_chars != 0:
+        print("Stong password!")
+    else:
+        print("Weak password!")
+password = input("Enter your password to check how strong it is: ")
+check_password(password)
