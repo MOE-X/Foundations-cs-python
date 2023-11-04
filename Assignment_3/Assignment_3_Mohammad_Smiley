@@ -158,7 +158,7 @@ def averageGPA(student_data):
 #####################################
 # Choice 8: Top Performing Students #
 #####################################
-def topPerformers(student_data):#this is all i can do about this choice i wont cheat
+def topPerformers(student_data):
     all_gpa = []
     top_names = []
     for item in student_data:
