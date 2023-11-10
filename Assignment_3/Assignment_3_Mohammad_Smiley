@@ -29,7 +29,7 @@ student_data = [
         "GPA" : 3.6,
     },
     {
-        "ID" : 4,
+        "ID" : 5,
         "Name" : "Malek",
         "Age" : 19,
         "Major" : "Engineering",
@@ -74,7 +74,7 @@ def getStudentByID(student_data,student_ID):
     for student in student_data:
         if student_ID == student["ID"]:
             for key, value in student.items():
-                print(key,": ",value)
+                print(key,":",value)
         else:
             return("ID not found")
         
