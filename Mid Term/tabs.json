@@ -1,39 +1,32 @@
 {
     "Tabs" : [
         {
-            "ID" : 1,
             "title" : "Quotes To Scrape",
             "URL" : "https://quotes.toscrape.com/"
         },
         {
-            "ID" : 2,
             "title" : "SE Factory",
             "URL" : "https://www.sefactory.io/",
             "children" : [
                 {
-                    "ID" : 3,
                     "title" : "FSW SE Factory",
                     "URL" : "https://www.sefactory.io/fsw"
                 },
                 {
-                    "ID" : 4,
                     "title" :"FSD SE Factory",
                     "URL" : "https://www.sefactory.io/fsd"
                 },
                 {
-                    "ID" : 5,
                     "title" :"UIX SE Factory",
                     "URL" : "https://www.sefactory.io/uix"
                 }
             ]
         },
         {
-            "ID" : 6,
             "title" : "Github Repo",
             "URL" : "https://github.com/MOE-X/Foundations-cs-python"
         },
         {
-            "ID" : 7,
             "title" : "YouTube-JSON Tutorial",
             "URL" : "https://www.youtube.com/watch?v=9N6a-VLBa2I&list=WL&index=1"
         }

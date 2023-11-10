@@ -3,6 +3,7 @@ import json
 opened_tabs = []
 
 def storeDataInList():
+    # Reads data from json file and stores it in a list
     try:
         with open(r'\Users\Mohammad Smiley\Foundations-cs-python\Mid Term\tabs.json') as file:
             tabs = json.load(file)
@@ -12,3 +13,18 @@ def storeDataInList():
         print("404 File not found")
 
 
+def openNewtab(title, url):
+    # Opens a new tab by taking tab info from the user
+    new_tab = {
+                "title": title,
+                "URL": url
+            }
+    opened_tabs.append(new_tab)
+    print(opened_tabs)
+
+
+
+title = input("Enter the title of the website: ")
+url = input("Enter the URL of the website: ")
+storeDataInList()
+openNewtab(title, url)
