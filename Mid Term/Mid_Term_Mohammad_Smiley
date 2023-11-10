@@ -1,1 +1,14 @@
 import json
+
+opened_tabs = []
+
+def storeDataInList():
+    try:
+        with open(r'\Users\Mohammad Smiley\Foundations-cs-python\Mid Term\tabs.json') as file:
+            tabs = json.load(file)
+        opened_tabs.append(tabs)    
+        print(opened_tabs)
+    except:
+        print("404 File not found")
+
+
