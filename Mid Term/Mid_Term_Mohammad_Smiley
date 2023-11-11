@@ -42,7 +42,7 @@ def openNewtab(title, url):
                 "title": title,
                 "URL": url
             }
-    opened_tabs["Tabs"].append(new_tab)
+    opened_tabs.append(new_tab)
     print(opened_tabs)
 #######################################################
 title = input("Enter The tab's title: ")
