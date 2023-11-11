@@ -1,30 +1,56 @@
 import json
 
-opened_tabs = []
+opened_tabs = [
+        {
+            "title" : "Quotes To Scrape",
+            "URL" : "https://quotes.toscrape.com/"
+        },
+        {
+            "title" : "SE Factory",
+            "URL" : "https://www.sefactory.io/",
+            "children" : [
+                {
+                    "title" : "FSW SE Factory",
+                    "URL" : "https://www.sefactory.io/fsw"
+                },
+                {
+                    "title" :"FSD SE Factory",
+                    "URL" : "https://www.sefactory.io/fsd"
+                },
+                {
+                    "title" :"UIX SE Factory",
+                    "URL" : "https://www.sefactory.io/uix"
+                }
+            ]
+        },
+        {
+            "title" : "Github Repo",
+            "URL" : "https://github.com/MOE-X/Foundations-cs-python"
+        },
+        {
+            "title" : "YouTube-JSON Tutorial",
+            "URL" : "https://www.youtube.com/watch?v=9N6a-VLBa2I&list=WL&index=1"
+        }
+]
 
-def storeDataInList():
-    # Reads data from json file and stores it in a list
-    try:
-        with open(r'\Users\Mohammad Smiley\Foundations-cs-python\Mid Term\tabs.json') as file:
-            tabs = json.load(file)
-        opened_tabs.append(tabs)    
-        print(opened_tabs)
-    except:
-        print("404 File not found")
 
 
+##################### Choice Nb 1 #####################
 def openNewtab(title, url):
     # Opens a new tab by taking tab info from the user
     new_tab = {
                 "title": title,
                 "URL": url
             }
-    opened_tabs.append(new_tab)
+    opened_tabs["Tabs"].append(new_tab)
     print(opened_tabs)
-
-
-
-title = input("Enter the title of the website: ")
-url = input("Enter the URL of the website: ")
-storeDataInList()
+#######################################################
+title = input("Enter The tab's title: ")
+url = input("Enter The URL of the page you want to open: ")
 openNewtab(title, url)
+
+
+
+
+
+
