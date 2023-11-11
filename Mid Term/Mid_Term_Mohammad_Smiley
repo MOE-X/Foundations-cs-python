@@ -54,3 +54,29 @@ openNewtab(title, url)
 
 
 
+
+
+
+
+
+
+
+#################### Choice Nb 2 #####################
+def closeTabByIndex(tab_index,opened_tabs):
+    # Closes a specific tab based on the index that the user gives
+    if tab_index:
+        if tab_index.isdigit():
+            del opened_tabs[int(tab_index)]
+            print("Deleted tab --> ", opened_tabs[int(tab_index)])
+            print(opened_tabs)
+        elif not tab_index:
+            del opened_tabs[-1]
+            print("Deleted last tab -->", opened_tabs[-1])
+            print(opened_tabs)
+        
+######################################################
+tab_index = input("Enter the index of the tab to delete it ")
+closeTabByIndex(tab_index, opened_tabs)
+
+
+
