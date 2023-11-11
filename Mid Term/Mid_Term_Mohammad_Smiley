@@ -102,6 +102,8 @@ def displayTabContentByIndex(tab_index,opened_tabs):
             if page_to_scrape.status_code == 200 :
                 soup = BeautifulSoup(page_to_scrape.text, 'html.parser')
                 print(soup.findAll)
+            else:
+                print('Error while accessing this URL... Please try again later!')
         
 ######################################################
 tab_index = input("Enter the index of the tab to display its html content :")
