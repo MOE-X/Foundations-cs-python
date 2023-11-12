@@ -48,7 +48,7 @@ loaded_tabs = []
 
 
 
-##################### Handeling URL user error #####################
+# Handeling URL user error 
 def urlUserError(url):
     if url:
         if (url.startswith("http://") or url.startswith("https://")):
@@ -61,10 +61,8 @@ def urlUserError(url):
         print("URL cannot be empty.")
         url = input("Please enter a URl this time")
         return url
-#####################################################################
 
-
-##################### Choice Nb 1 #####################
+# Choice 1. Open Tab
 def openNewtab(title, url):
     # Opens a new tab by taking tab info from the user
     urlUserError(url)
@@ -74,22 +72,8 @@ def openNewtab(title, url):
             }
     opened_tabs.append(new_tab)
     return(opened_tabs)
-#######################################################
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-#################### Choice Nb 2 #####################
+# Choice 2. Close Tab
 def closeTabByIndex(tab_index,opened_tabs):
     # Closes a specific tab based on the index that the user gives
     if tab_index:
@@ -131,22 +115,7 @@ def closeTabByIndex(tab_index,opened_tabs):
         print("Deleted last tab -->", opened_tabs[-1])
        
         
-######################################################
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#################### Choice Nb 3 #####################
+# Choice 3. Switch Tab
 def displayTabContentByIndex(tab_index,opened_tabs):
     # Displays the html content of a specific tab based on the index given by the user
     if tab_index:
@@ -168,45 +137,17 @@ def displayTabContentByIndex(tab_index,opened_tabs):
         if page_to_scrape.status_code == 200 :
             soup = BeautifulSoup(page_to_scrape.text, 'html.parser')
             print(soup.findAll)
-######################################################
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#################### Choice Nb 4 #####################
+# Choice 4. Display All Tabs
 def displayAllTabs(opened_tabs):
     for tab in opened_tabs:
         print("> ",tab["title"])
         if len(tab) > 2:
             for nested_tab in tab["children"]:
                 print("\t-> ", nested_tab["title"])
-######################################################
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-##################### Choice Nb 5 #####################
+# Choice 5. Open Nested Tab
 def openNestedTab(index_of_parent, title, url):
     urlUserError(url)
     new_nested_tab = {
@@ -218,43 +159,14 @@ def openNestedTab(index_of_parent, title, url):
             parent["children"].append(new_nested_tab)
     print(opened_tabs)
 
-#######################################################
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##################### Choice Nb 6 #####################
+# Choice 6. Clear All Tabs
 def clearAllTabs(opened_tabs):
     opened_tabs.clear()
     return opened_tabs
-#######################################################
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-##################### Choice Nb 7 #####################
+# Choice 7. Save Tabs
 def saveTabsInJsonFile(file_path):
     try:
         with open(file_path, 'w') as file:
@@ -263,22 +175,9 @@ def saveTabsInJsonFile(file_path):
         return file
     except FileNotFoundError:
         print("File not found")
-#######################################################
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-##################### Choice Nb 8 #####################
+# Choice 8. Import Tabs
 def loadTabsFromJsonFile(file_path, loaded_tabs):
     try:
         with open(file_path, 'r') as file:
@@ -288,31 +187,27 @@ def loadTabsFromJsonFile(file_path, loaded_tabs):
             return loaded_tabs
     except FileNotFoundError:
         print("File not found")
-#######################################################
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-##################### Choice Nb 9 #####################
+# Choice 9. Exit
 def closeProgram():
     print("Killing the program XO...")
     exit()
-#######################################################
 
+
+
+
+# Choice 10. Displays the credits
 def displayCredits():
     print("JSON Tutorial ---> https://www.youtube.com/watch?v=9N6a-VLBa2I&list=WL&index=1")
     print("Web Scraping Tutorial ---> https://youtu.be/QhD015WUMxE?si=1AF10b7wBi_BUVLc")
     print("File Systems Tutorial ---> https://youtu.be/GJ5LJnIEEYo?si=wgPE9rHoZVUYBkXu")
+
+
+
+
+
+############# Menu #############
 def userMenu(): # This ft print the user menu
     print("""
 1 _ Open a new tab,
@@ -336,6 +231,11 @@ def userMenu(): # This ft print the user menu
 10 _ Display credits menu.      # This options displays the credits of some methods and the youtube links of the videos i learned from
 ------------------------------  
 """)
+#
+
+
+
+
 
 while True:
     userMenu()
