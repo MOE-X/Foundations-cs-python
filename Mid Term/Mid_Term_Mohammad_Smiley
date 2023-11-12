@@ -309,6 +309,10 @@ def closeProgram():
     exit()
 #######################################################
 
+def displayCredits():
+    print("JSON Tutorial ---> https://www.youtube.com/watch?v=9N6a-VLBa2I&list=WL&index=1")
+    print("Web Scraping Tutorial ---> https://youtu.be/QhD015WUMxE?si=1AF10b7wBi_BUVLc")
+    print("File Systems Tutorial ---> https://youtu.be/GJ5LJnIEEYo?si=wgPE9rHoZVUYBkXu")
 def userMenu(): # This ft print the user menu
     print("""
 1 _ Open a new tab,
@@ -372,4 +376,4 @@ while True:
     elif choice == 9:
         closeProgram()
     elif choice == 10:
-        pass
+        displayCredits()
