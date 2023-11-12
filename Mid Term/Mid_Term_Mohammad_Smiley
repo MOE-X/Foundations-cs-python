@@ -68,9 +68,22 @@ def closeTabByIndex(tab_index,opened_tabs):
     # Closes a specific tab based on the index that the user gives
     if tab_index:
         if tab_index.isdigit():
-            del opened_tabs[int(tab_index) - 1]
-            print("Deleted tab --> ", opened_tabs[int(tab_index)])
-            
+            if len(opened_tabs[int(tab_index)]) == 2:
+                del opened_tabs[int(tab_index)]
+                print("Deleted tab --> ", opened_tabs[int(tab_index)])
+            elif len(opened_tabs[int(tab_index)]) > 2:
+                print("""The tab you chose have nested tabs, please choose what you want to do:\n
+1. Delete the whole tab(akong with the nested tabs).
+2. Delete a nested tab by index.\n""")
+                choice = int(input("Your choice is: "))
+                if choice == 1:
+                    del opened_tabs[int(tab_index)]
+                    print("Deleted tab --> ", opened_tabs[int(tab_index)])
+                elif choice == 2:
+                    nested_choice = input("Enter the index of the nested tab to delete it: ")
+                    if netsed_choice.isdigit() and len(opened_tabs[int(tab_index)][nested_choice]):
+                        del opened_tabs[int(tab_index)][nested_choice]
+                        print("Deleted nested tab --> ", opened_tabs[int(tab_index)][nested_choice])
         else:
             print("Please enter a valid number: ", end="")
             tab_index = input("")
@@ -83,7 +96,7 @@ def closeTabByIndex(tab_index,opened_tabs):
     print(opened_tabs)
         
 ######################################################
-tab_index = input("Enter the index of the tab to delete it :")
+tab_index = input("Enter the index of the tab to delete it: ")
 closeTabByIndex(tab_index, opened_tabs)
 
 
