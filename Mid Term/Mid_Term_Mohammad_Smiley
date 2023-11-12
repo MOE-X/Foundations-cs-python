@@ -160,7 +160,16 @@ def displayTabContentByIndex(tab_index,opened_tabs):
                 print(soup.findAll)
             else:
                 print('Error while accessing this URL... Please try again later!\nStatus code --> ',page_to_scrape.status_code)
-
+        else:
+            print("Please enter a valid number: ", end="")
+            tab_index = input("")
+            displayTabContentByIndex(tab_index, opened_tabs)
+    else:
+        url_to_scrape = opened_tabs[-1]["URL"]              
+        page_to_scrape = requests.get(url_to_scrape)
+        if page_to_scrape.status_code == 200 :
+            soup = BeautifulSoup(page_to_scrape.text, 'html.parser')
+            print(soup.findAll)
 ######################################################
 tab_index = input("Enter the index of the tab to display its html content :")
 displayTabContentByIndex(tab_index, opened_tabs)
