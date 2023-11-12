@@ -270,7 +270,7 @@ def saveTabsInJsonFile(file_path):
             json.dump(opened_tabs, file, indent = 2)
             print("Data is saved, check the file.")
         return file
-    except:
+    except FileNotFoundError:
         print("File not found")
 #######################################################
 file_path = input("Enter the path of the file you want to save the tabs to: ")
@@ -296,7 +296,7 @@ def loadTabsFromJsonFile(file_path, loaded_tabs):
             loaded_tabs.append(tabs)
             print("Data is saved.\nLoaded Tabs --> ", loaded_tabs)
             return loaded_tabs
-    except:
+    except FileNotFoundError:
         print("File not found")
 #######################################################
 file_path = input("Enter the path of the file you want to load the tabs from: ")
