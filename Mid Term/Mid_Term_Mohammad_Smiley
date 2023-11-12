@@ -67,6 +67,7 @@ def urlUserError(url):
 ##################### Choice Nb 1 #####################
 def openNewtab(title, url):
     # Opens a new tab by taking tab info from the user
+    urlUserError(url)
     new_tab = {
                 "title": title,
                 "URL": url
@@ -74,9 +75,7 @@ def openNewtab(title, url):
     opened_tabs.append(new_tab)
     return(opened_tabs)
 #######################################################
-title = input("Enter The tab's title: ")
-url = input("Enter The URL of the page you want to open: ")
-print(openNewtab(title, url))
+
 
 
 
@@ -133,8 +132,7 @@ def closeTabByIndex(tab_index,opened_tabs):
        
         
 ######################################################
-tab_index = input("Enter the index of the tab to delete it: ")
-closeTabByIndex(tab_index, opened_tabs)
+
 
 
 
@@ -171,8 +169,7 @@ def displayTabContentByIndex(tab_index,opened_tabs):
             soup = BeautifulSoup(page_to_scrape.text, 'html.parser')
             print(soup.findAll)
 ######################################################
-tab_index = input("Enter the index of the tab to display its html content :")
-displayTabContentByIndex(tab_index, opened_tabs)
+
 
 
 
@@ -195,9 +192,7 @@ def displayAllTabs(opened_tabs):
             for nested_tab in tab["children"]:
                 print("\t-> ", nested_tab["title"])
 ######################################################
-print("Displaying all tabs and their children...")
-print("-"*45)
-displayAllTabs(opened_tabs)
+
 
 
 
@@ -224,12 +219,7 @@ def openNestedTab(index_of_parent, title, url):
 
 #######################################################
 
-index_of_parent = int(input("Enter the index of the parent tab: "))
-title = input("Enter the title of the website: ")
-url = input("Enter the URL of the website: ")
-print("Opening a nested tab within the selected parent tab...")
-openNestedTab(index_of_parent, title, url)
-print("-"*40)
+
 
 
 
@@ -249,7 +239,7 @@ def clearAllTabs(opened_tabs):
     opened_tabs.clear()
     return opened_tabs
 #######################################################
-print(clearAllTabs(opened_tabs))
+
 
 
 
@@ -273,8 +263,7 @@ def saveTabsInJsonFile(file_path):
     except FileNotFoundError:
         print("File not found")
 #######################################################
-file_path = input("Enter the path of the file you want to save the tabs to: ")
-saveTabsInJsonFile(file_path)
+
 
 
 
@@ -299,8 +288,7 @@ def loadTabsFromJsonFile(file_path, loaded_tabs):
     except FileNotFoundError:
         print("File not found")
 #######################################################
-file_path = input("Enter the path of the file you want to load the tabs from: ")
-loadTabsFromJsonFile(file_path, loaded_tabs)
+
 
 
 
@@ -344,3 +332,43 @@ def userMenu(): # This ft print the user menu
 ------------------------------  
 """)
 
+while True:
+    userMenu()
+    choice = int(input("Choose an option : "))
+    if choice < 1 or choice > 10:
+        print("Invalid number! Please enter between 1 and 10.")
+        userMenu()
+        choice = int(input("Enter A correct choice: "))
+    if choice == 1:
+        title = input("Enter The tab's title: ")
+        url = input("Enter The URL of the page you want to open: ")
+        print(openNewtab(title, url))
+    elif choice == 2:
+        tab_index = input("Enter the index of the tab to delete it: ")
+        closeTabByIndex(tab_index, opened_tabs)
+    elif choice == 3:
+        tab_index = input("Enter the index of the tab to display its html content :")
+        displayTabContentByIndex(tab_index, opened_tabs)
+    elif choice == 4:
+        print("Displaying all tabs and their children...")
+        print("-"*45)
+        displayAllTabs(opened_tabs)
+    elif choice == 5:
+        index_of_parent = int(input("Enter the index of the parent tab: "))
+        title = input("Enter the title of the website: ")
+        url = input("Enter the URL of the website: ")
+        print("Opening a nested tab within the selected parent tab...")
+        openNestedTab(index_of_parent, title, url)
+        print("-"*40)
+    elif choice == 6:
+        print(clearAllTabs(opened_tabs))
+    elif choice == 7:
+        file_path = input("Enter the path of the file you want to save the tabs to: ")
+        saveTabsInJsonFile(file_path)
+    elif choice == 8:
+        file_path = input("Enter the path of the file you want to load the tabs from: ")
+        loadTabsFromJsonFile(file_path, loaded_tabs)
+    elif choice == 9:
+        closeProgram()
+    elif choice == 10:
+        pass
