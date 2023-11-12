@@ -265,3 +265,21 @@ def loadTabsFromJsonFile(file_path, loaded_tabs):
 #######################################################
 file_path = input("Enter the path of the file you want to load the tabs from: ")
 loadTabsFromJsonFile(file_path, loaded_tabs)
+
+
+
+
+
+
+
+
+
+
+
+
+
+##################### Choice Nb 9 #####################
+def closeProgram():
+    print("Killing the program XO...")
+    exit()
+#######################################################
