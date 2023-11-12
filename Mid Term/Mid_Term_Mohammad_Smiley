@@ -181,9 +181,10 @@ def openNestedTab(index_of_parent, title, url):
                         "title" : title,
                         "URL" : url
                 }
-    for parent in opened_tabs[0]["Tabs"]:
+    for parent in opened_tabs:
         if len(parent) > 2:
             parent["children"].append(new_nested_tab)
+        elif 
     print(opened_tabs)
 
 #######################################################
@@ -194,3 +195,22 @@ url = input("Enter the URL of the website: ")
 print("Opening a nested tab within the selected parent tab...")
 print("-"*40)
 openNestedTab(index_of_parent, title, url)
+
+
+
+
+
+
+
+
+
+
+
+
+
+##################### Choice Nb 6 #####################
+def clearAllTabs(opened_tabs):
+    opened_tabs.clear()
+    return opened_tabs
+#######################################################
+print(clearAllTabs(opened_tabs))
