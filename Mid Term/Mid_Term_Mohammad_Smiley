@@ -47,9 +47,9 @@ def openNewtab(title, url):
     opened_tabs.append(new_tab)
     return(opened_tabs)
 #######################################################
-title = input("Enter The tab's title: ")
-url = input("Enter The URL of the page you want to open: ")
-print(openNewtab(title, url))
+# title = input("Enter The tab's title: ")
+# url = input("Enter The URL of the page you want to open: ")
+# print(openNewtab(title, url))
 
 
 
@@ -106,8 +106,8 @@ def closeTabByIndex(tab_index,opened_tabs):
         return opened_tabs
         
 ######################################################
-tab_index = input("Enter the index of the tab to delete it: ")
-print(closeTabByIndex(tab_index, opened_tabs))
+# tab_index = input("Enter the index of the tab to delete it: ")
+# print(closeTabByIndex(tab_index, opened_tabs))
 
 
 
@@ -135,8 +135,8 @@ def displayTabContentByIndex(tab_index,opened_tabs):
                 print('Error while accessing this URL... Please try again later!\nStatus code --> ',page_to_scrape.status_code)
         
 ######################################################
-tab_index = input("Enter the index of the tab to display its html content :")
-displayTabContentByIndex(tab_index, opened_tabs)
+# tab_index = input("Enter the index of the tab to display its html content :")
+# displayTabContentByIndex(tab_index, opened_tabs)
 
 
 
@@ -159,9 +159,9 @@ def displayAllTabs(opened_tabs):
             for nested_tab in tab["children"]:
                 print("\t-> ", nested_tab["title"])
 ######################################################
-print("Displaying all tabs and their children...")
-print("-"*45)
-displayAllTabs(opened_tabs)
+# print("Displaying all tabs and their children...")
+# print("-"*45)
+# displayAllTabs(opened_tabs)
 
 
 
@@ -184,17 +184,16 @@ def openNestedTab(index_of_parent, title, url):
     for parent in opened_tabs:
         if len(parent) > 2:
             parent["children"].append(new_nested_tab)
-        elif 
     print(opened_tabs)
 
 #######################################################
 
-index_of_parent = int(input("Enter the index of the parent tab: "))
-title = input("Enter the title of the website: ")
-url = input("Enter the URL of the website: ")
-print("Opening a nested tab within the selected parent tab...")
-print("-"*40)
-openNestedTab(index_of_parent, title, url)
+# index_of_parent = int(input("Enter the index of the parent tab: "))
+# title = input("Enter the title of the website: ")
+# url = input("Enter the URL of the website: ")
+# print("Opening a nested tab within the selected parent tab...")
+# print("-"*40)
+# openNestedTab(index_of_parent, title, url)
 
 
 
@@ -213,4 +212,28 @@ def clearAllTabs(opened_tabs):
     opened_tabs.clear()
     return opened_tabs
 #######################################################
-print(clearAllTabs(opened_tabs))
+# print(clearAllTabs(opened_tabs))
+
+
+
+
+
+
+
+
+
+
+
+
+
+##################### Choice Nb 7 #####################
+def saveTabsInJsonFile(file_path):
+    try:
+        with open(file_path, 'w') as file:
+            json.dump(opened_tabs, file, indent = 2)
+        return file
+    except:
+        print("404 File not found")
+#######################################################
+file_path = input("Enter the path of the file you want to save the tabs to: ")
+saveTabsInJsonFile(file_path)
