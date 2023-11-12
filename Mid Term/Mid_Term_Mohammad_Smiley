@@ -68,13 +68,19 @@ def closeTabByIndex(tab_index,opened_tabs):
     # Closes a specific tab based on the index that the user gives
     if tab_index:
         if tab_index.isdigit():
-            del opened_tabs[int(tab_index)]
+            del opened_tabs[int(tab_index) - 1]
             print("Deleted tab --> ", opened_tabs[int(tab_index)])
-            print(opened_tabs)
-        elif not tab_index:
-            del opened_tabs[-1]
-            print("Deleted last tab -->", opened_tabs[-1])
-            print(opened_tabs)
+            
+        else:
+            print("Please enter a valid number: ", end="")
+            tab_index = input("")
+            del opened_tabs[int(tab_index) - 1]
+            print("Deleted tab --> ", opened_tabs[int(tab_index)])
+    elif not tab_index:
+        del opened_tabs[-1]
+        print("No index was given, deleting last opened tab...")
+        print("Deleted last tab -->", opened_tabs[-1])
+    print(opened_tabs)
         
 ######################################################
 tab_index = input("Enter the index of the tab to delete it :")
@@ -97,7 +103,7 @@ def displayTabContentByIndex(tab_index,opened_tabs):
     # Displays the html content of a specific tab based on the index given by the user
     if tab_index:
         if tab_index.isdigit():
-            url_to_scrape = opened_tabs[int(tab_index)]["URL"]
+            url_to_scrape = opened_tabs[int(tab_index)]["URL"]              #still needs some logic!!!
             page_to_scrape = requests.get(url_to_scrape)
             if page_to_scrape.status_code == 200 :
                 soup = BeautifulSoup(page_to_scrape.text, 'html.parser')
