@@ -130,7 +130,7 @@ def closeTabByIndex(tab_index,opened_tabs):
         del opened_tabs[-1]
         print("No index was given, deleting last opened tab...")
         print("Deleted last tab -->", opened_tabs[-1])
-        
+       
         
 ######################################################
 tab_index = input("Enter the index of the tab to delete it: ")
