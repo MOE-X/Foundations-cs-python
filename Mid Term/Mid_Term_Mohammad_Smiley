@@ -310,3 +310,16 @@ def closeProgram():
     print("Killing the program XO...")
     exit()
 #######################################################
+
+print("""
+1 _ Open a new tab,
+2 _ Close a tab by its index,
+3 _ Switch tab,
+4 _ Display all tabs,
+5 _ Open a nested tab,
+6 _ Clear all tabs,
+7 _ Save tabs,
+8 _ Import tabs,
+9 _ Exit,
+10 _ Display credits menu.  # This options displays the credits of some methods and the youtube links of the videos i learned from 
+""")
