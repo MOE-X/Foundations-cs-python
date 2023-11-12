@@ -101,7 +101,7 @@ def closeTabByIndex(tab_index,opened_tabs):
                 # Checks if the tab that the user wants to close is a normal tab
                 del opened_tabs[int(tab_index)]
                 print("Deleted tab --> ", opened_tabs[int(tab_index)])
-                return opened_tabs
+                
             elif len(opened_tabs[int(tab_index)]) > 2:
                 # Checks if the tab that the user wants to close is a nested tab
                 print("""The tab you chose have nested tabs, please choose what you want to do:\n
@@ -111,13 +111,13 @@ def closeTabByIndex(tab_index,opened_tabs):
                 if choice == 1:
                     del opened_tabs[int(tab_index)]
                     print("Deleted tab --> ", opened_tabs[int(tab_index)])
-                    return opened_tabs
+                    
                 elif choice == 2:
                     nested_choice = input("Enter the index of the nested tab to delete it: ")
                     if nested_choice.isdigit() and len(opened_tabs[int(tab_index)]["children"][int(nested_choice)]):
                         del opened_tabs[int(tab_index)]["children"][int(nested_choice)]
                         print("Deleted nested tab --> ", opened_tabs[int(tab_index)]["children"][int(nested_choice)])
-                        return opened_tabs
+                        
                     else:
                         print("Invalid Input!")
         else:
@@ -125,16 +125,16 @@ def closeTabByIndex(tab_index,opened_tabs):
             tab_index = input("")
             del opened_tabs[int(tab_index)]
             print("Deleted tab --> ", opened_tabs[int(tab_index)])
-            return opened_tabs
+            
     elif not tab_index:
         del opened_tabs[-1]
         print("No index was given, deleting last opened tab...")
         print("Deleted last tab -->", opened_tabs[-1])
-        return opened_tabs
+        
         
 ######################################################
 tab_index = input("Enter the index of the tab to delete it: ")
-print(closeTabByIndex(tab_index, opened_tabs))
+closeTabByIndex(tab_index, opened_tabs)
 
 
 
@@ -334,3 +334,4 @@ def userMenu(): # This ft print the user menu
 10 _ Display credits menu.      # This options displays the credits of some methods and the youtube links of the videos i learned from
 ------------------------------  
 """)
+
