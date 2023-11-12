@@ -208,6 +208,7 @@ def displayAllTabs(opened_tabs):
 
 ##################### Choice Nb 5 #####################
 def openNestedTab(index_of_parent, title, url):
+    urlUserError(url)
     new_nested_tab = {
                         "title" : title,
                         "URL" : url
