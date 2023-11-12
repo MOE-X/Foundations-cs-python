@@ -37,6 +37,33 @@ opened_tabs = [
 
 loaded_tabs = []
 
+
+
+
+
+
+
+
+
+
+
+
+##################### Handeling URL user error #####################
+def urlUserError(url):
+    if url:
+        if (url.startswith("http://") or url.startswith("https://")):
+            return None
+        else:
+            print("URL invalid, check it and try again: ", end="")
+            url = input()
+            return url
+    else:
+        print("URL cannot be empty.")
+        url = input("Please enter a URl this time")
+        return url
+#####################################################################
+
+
 ##################### Choice Nb 1 #####################
 def openNewtab(title, url):
     # Opens a new tab by taking tab info from the user
