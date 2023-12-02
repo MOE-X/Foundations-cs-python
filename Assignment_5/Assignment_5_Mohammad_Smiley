@@ -1,0 +1,99 @@
+import datetime
+from anytree import Node, RenderTree, PreOrderIter
+
+class FamilyTree:
+    def __init__(self, root_name, birthdate):
+        self.root = Node(f"{root_name}\n({birthdate})")
+
+    def add_family_member(self, parent_name):
+        name = input("Enter the member's name: ")
+        family_name = input("Enter the family name: ")
+        birthdate = input("Enter the birthdate (YYYY-MM-DD): ")
+        birthdate = datetime.datetime.strptime(birthdate, '%Y-%m-%d').date()
+
+        if parent_name.lower() == 'root':
+            parent_node = self.root
+        else:
+            parent_node = self.find_node_by_name(parent_name)
+            if not parent_node:
+                print(f"Error: Parent with name '{parent_name}' not found.")
+                return
+
+        new_member = Node(f"{name} {family_name}\n({birthdate})", parent=parent_node)
+        print(f"Family member {name} {family_name} added successfully!")
+
+    def find_node_by_name(self, name):
+        for node in PreOrderIter(self.root):
+            if node.name.startswith(name):
+                return node
+        return None
+
+    def display_sorted_birthdays(self):
+        birthdays = [node.name.split("\n")[1] for node in RenderTree(self.root)]
+        birthdays.sort()
+        print("\nSorted Birthdays:")
+        for birthday in birthdays:
+            print(birthday)
+
+    def find_relationship(self, name1, name2):
+        node1 = self.find_node_by_name(name1)
+        node2 = self.find_node_by_name(name2)
+
+        if node1 and node2:
+            relationship = self._find_relationship(node1, node2)
+            print(f"The relationship between {name1} and {name2} is: {relationship}")
+        else:
+            print("Error: One or both members not found.")
+
+    def _find_relationship(self, node1, node2):
+        relationship = RenderTree(node1).by_attr()
+        path_to_node2 = [path for path in RenderTree(node1) if node2 in path][0]
+        depth = len(path_to_node2) - 1
+
+        if depth == 0:
+            return "Same person"
+        elif depth == 1:
+            return "Parent" if path_to_node2[1].name.split()[0] == node1.name.split()[0] else "Child"
+        else:
+            return "Grand" * (depth - 1) + ("parent" if path_to_node2[-1].name.split()[0] == node1.name.split()[0] else "child")
+
+    def visualize_family_tree(self):
+        for pre, _, node in RenderTree(self.root):
+            print(f"{pre}{node.name}")
+
+    def count_same_first_names(self, first_name):
+        first_names = [node.name.split()[0] for node in RenderTree(self.root)]
+        count = first_names.count(first_name)
+        return count
+
+if __name__ == "__main__":
+    # Sample usage
+    root_name = input("Enter the root member's name: ")
+    root_birthdate = input("Enter the root member's birthdate (YYYY-MM-DD): ")
+    family_tree = FamilyTree(root_name, root_birthdate)
+
+    while True:
+        print("\n1. Add Family Member\n2. Display Sorted Birthdays\n3. Find Relationship\n"
+              "4. Visualize Family Tree\n5. Count Same First Names\n6. Exit")
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            parent_name = input("Enter the parent's name for the new member (or 'root' for the main family): ")
+            family_tree.add_family_member(parent_name)
+        elif choice == '2':
+            family_tree.display_sorted_birthdays()
+        elif choice == '3':
+            name1 = input("Enter the first member's name: ")
+            name2 = input("Enter the second member's name: ")
+            family_tree.find_relationship(name1, name2)
+        elif choice == '4':
+            family_tree.visualize_family_tree()
+        elif choice == '5':
+            first_name = input("Enter the first name to count: ")
+            count = family_tree.count_same_first_names(first_name)
+            print(f"There are {count} family members with the first name {first_name}")
+        elif choice == '6':
+            print("Exiting the program.")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 6.")
